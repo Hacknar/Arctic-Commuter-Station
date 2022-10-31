@@ -1,0 +1,370 @@
+<ModOps>
+	<ModOp GUID='4532' Type="addNextSibling">
+    <Asset>
+		<Template>FeatureUnlock</Template>
+		<Values>
+		  <Standard>
+			<GUID>103692005</GUID>
+			<Name>Arctic commuter station</Name>
+		  </Standard>
+		  <Trigger>
+			<TriggerCondition>
+			  <Template>ConditionPlayerCounter</Template>
+			  <Values>
+				<Condition />
+				<ConditionPlayerCounter>
+				  <PlayerCounter>PopulationByLevel</PlayerCounter>
+				  <Context>112643</Context> <!-- technicians -->
+				  <CounterAmount>1</CounterAmount>
+				</ConditionPlayerCounter>
+			  </Values>
+			</TriggerCondition>
+			<TriggerActions>
+			  <Item>
+				<TriggerAction>
+				  <Template>ActionUnlockAsset</Template>
+				  <Values>
+					<Action />
+					<ActionUnlockAsset>
+					  <UnlockAssets>
+						<Item>
+						  <Asset>103692001</Asset>
+						</Item>
+					  </UnlockAssets>
+					</ActionUnlockAsset>
+				  </Values>
+				</TriggerAction>
+			  </Item>
+			</TriggerActions>
+		  </Trigger>
+		  <TriggerSetup>
+			<UsedBySecondParties>0</UsedBySecondParties>
+		  </TriggerSetup>
+		</Values>
+	  </Asset>
+    </ModOp>
+
+    <!-- Add Arctic Commuter station to asset pool -->
+    <ModOp Type="add" GUID="4532" Path="/Values/AssetPool/AssetList">
+        <Item>
+            <Asset>103692001</Asset>
+        </Item>
+    </ModOp>
+		<!-- add commuter station to construction menu: insert after mail sorting office -->
+	<ModOp Type="addNextSibling" GUID='112791,116343' Path="/Values/ConstructionCategory/BuildingList/Item[Building='4513']">
+		<Item>
+			<Building>103692001</Building>
+		</Item>
+	</ModOp>
+		<!-- add arctic workforce to commuting menu -->
+	<ModOp Type="add" GUID='501065' Path="/Values/ObjectmenuCommuterHarbourScene/WorkforceToRegion">
+		<Arctic>
+			<WorkforceList>
+				<Item>
+					<Workforce>112653</Workforce>
+				</Item>
+				<Item>
+					<Workforce>112654</Workforce>
+				</Item>
+			</WorkforceList>
+		</Arctic>
+	</ModOp>
+
+	<ModOp Type="add" GUID='501065' Path="/Values/ObjectmenuCommuterHarbourScene/BuildingSpecificData">
+		<Item>
+			<Building>103692001</Building>
+			<PortraitParticipant>Paloma</PortraitParticipant>
+			<PauseText>1577</PauseText>
+			<NoOtherHarborText>1576</NoOtherHarborText>
+		</Item>
+	</ModOp>
+								
+								<ModOp Type="replace" GUID='4258' Path="/Values/ModuleOwner/ModuleLimits">
+									<ModuleLimits>
+										<PlatformItem>
+											<Limit>1</Limit>
+										</PlatformItem>
+										<PlatformPassenger>
+											<Limit>1</Limit>
+										</PlatformPassenger>
+										<PlatformPost>
+											<Limit>1</Limit>
+										</PlatformPost>
+										<PlatformWorkforceTransfer>
+											<Limit>1</Limit>
+										</PlatformWorkforceTransfer>
+									</ModuleLimits>
+								</ModOp>
+
+								<!-- Add Arctic Commuter station to module options -->
+								<ModOp Type="add" GUID="4258" Path="/Values/ModuleOwner/ConstructionOptions">
+									<Item>
+										<ModuleGUID>103692001</ModuleGUID>
+									</Item>
+								</ModOp>
+
+    <!-- Add Arctic Commuter station -->
+    <ModOp Type="addNextSibling" GUID="4259" >
+	<Asset>
+		<Template>AirshipWorkforceFreeModule</Template>
+		<Values>
+		  <Standard>
+			<GUID>103692001</GUID>
+			<Name>Commuter Station</Name>
+			<IconFilename>data/ui/2kimages/main/3dicons/airship_platform/icon_airship_platform_workforce.png</IconFilename>
+			<InfoDescription>1576</InfoDescription>
+		  </Standard>
+		  <Building>
+			<BuildingCategoryName>11151</BuildingCategoryName>
+			<AssociatedRegions>Arctic</AssociatedRegions>
+			<SecondPartyRelevant>0</SecondPartyRelevant>
+		  </Building>
+		  <Blocking />
+		  <Cost>
+			<Costs>
+			  <Item>
+				<Ingredient>1010017</Ingredient>
+				<Amount>15000</Amount>
+			  </Item>
+			  <Item>
+				<Ingredient>1010196</Ingredient>
+				<Amount>20</Amount>
+			  </Item>
+			  <Item>
+				<Ingredient>1010205</Ingredient>
+				<Amount>15</Amount>
+			  </Item>
+			  <Item>
+				<Ingredient>1010218</Ingredient>
+			  </Item>
+			  <Item>
+				<Ingredient>1010207</Ingredient>
+			  </Item>
+			  <Item>
+				<Ingredient>1010202</Ingredient>
+			  </Item>
+			</Costs>
+		  </Cost>
+		  <Object>
+			<Variations>
+			  <Item>
+				<Filename>data/dlc11/graphics/buildings/special/airship_landing_platform_modules/platform_module_post_arctic.cfg</Filename>
+			  </Item>
+			</Variations>
+		  </Object>
+		  <Mesh />
+		  <Selection>
+			<GUIType>WorkforceConnector</GUIType>
+			<OnSelection>
+			  <IsBaseAutoCreateAsset>1</IsBaseAutoCreateAsset>
+			  <Values>
+				<ActionList />
+			  </Values>
+			</OnSelection>
+			<ParticipantMessageArcheType>Human0</ParticipantMessageArcheType>
+			<Colors>
+			  <WeakSelectionColorType>NoColor</WeakSelectionColorType>
+			</Colors>
+		  </Selection>
+		  <Text>
+			<LocaText>
+			  <English>
+				<Text>Commuter Station</Text>
+				<Status>Exported</Status>
+			  </English>
+			</LocaText>
+			<LineID>56068</LineID>
+		  </Text>
+		  <Constructable />
+		  <Locked>
+			<DLCDependency>24962</DLCDependency>
+		  </Locked>
+		  <SoundEmitter>
+			<DestroySounds>
+			  <Item />
+			</DestroySounds>
+			<SelectionSounds>
+			  <Item />
+			</SelectionSounds>
+			<ConstructionSounds>
+			  <BuildFailed>
+				<Item />
+			  </BuildFailed>
+			  <BuildMoveStart>
+				<Item />
+			  </BuildMoveStart>
+			  <BuildMoveSuccess>
+				<Item />
+			  </BuildMoveSuccess>
+			  <BuildMoveEnd>
+				<Item />
+			  </BuildMoveEnd>
+			</ConstructionSounds>
+			<ProductionSounds>
+			  <UI>
+				<Item />
+			  </UI>
+			</ProductionSounds>
+		  </SoundEmitter>
+		  <BuildingModule>
+			<ModuleMoodImage>data/ui/2kimages/main/assets/cultural_building_mood_bg/bg_castle.png</ModuleMoodImage>
+		  </BuildingModule>
+		  <Attackable>
+			<HasRuinState>1</HasRuinState>
+			<SelfHealPerHealTick>4</SelfHealPerHealTick>
+		  </Attackable>
+		  <WorkforceConnector />
+		  <FeedbackController />
+		  <Pausable>
+			<CanPauseManually>1</CanPauseManually>
+		  </Pausable>
+		  <Infolayer />
+		  <UpgradeList />
+		  <BuildingUnique>
+			<Uniques>
+			  <Item>
+				<UniqueType>AirshipPlatformWorkforceTransferModule</UniqueType>
+				<UniqueScope>Area</UniqueScope>
+			  </Item>
+			</Uniques>
+		  </BuildingUnique>
+		</Values>
+	  </Asset>
+    </ModOp>
+
+</ModOps>	
+<!--
+
+    <Template>
+      <Name>AirshipPlatformModuleWorkforceTransfer</Name>
+      <Properties>
+        <Standard />
+        <Building>
+          <BuildingType>BuildingModule</BuildingType>
+          <BuildingCategoryName>100005</BuildingCategoryName>
+        </Building>
+        <Blocking />
+        <Cost>
+          <Costs>
+            <Item>
+              <Ingredient>1010017</Ingredient>
+              <Amount>1</Amount>
+            </Item>
+            <Item>
+              <Ingredient>1010196</Ingredient>
+            </Item>
+            <Item>
+              <Ingredient>1010205</Ingredient>
+            </Item>
+            <Item>
+              <Ingredient>1010218</Ingredient>
+            </Item>
+            <Item>
+              <Ingredient>1010207</Ingredient>
+            </Item>
+            <Item>
+              <Ingredient>1010202</Ingredient>
+            </Item>
+          </Costs>
+        </Cost>
+        <Object>
+          <IgnoreForMinimapGeneration>1</IgnoreForMinimapGeneration>
+        </Object>
+        <Mesh />
+        <Selection>
+          <GUIType>Module</GUIType>
+          <OnSelection>
+            <IsBaseAutoCreateAsset>1</IsBaseAutoCreateAsset>
+            <Values>
+              <ActionList />
+            </Values>
+          </OnSelection>
+          <ParticipantMessageArcheType>[NONE]</ParticipantMessageArcheType>
+        </Selection>
+        <Text />
+        <Constructable>
+          <DestructionCategory>Production</DestructionCategory>
+        </Constructable>
+        <Locked />
+        <SoundEmitter>
+          <DestroySounds>
+            <Item>
+              <Sound>9818756</Sound>
+            </Item>
+          </DestroySounds>
+          <ConstructionSounds>
+            <BuildFailed>
+              <Item>
+                <Sound>9818387</Sound>
+              </Item>
+            </BuildFailed>
+            <BuildMoveStart>
+              <Item>
+                <Sound>9818755</Sound>
+              </Item>
+            </BuildMoveStart>
+            <BuildMoveSuccess>
+              <Item>
+                <Sound>203995</Sound>
+              </Item>
+            </BuildMoveSuccess>
+            <BuildMoveEnd>
+              <Item>
+                <Sound>200141</Sound>
+              </Item>
+            </BuildMoveEnd>
+          </ConstructionSounds>
+        </SoundEmitter>
+        <BuildingModule>
+          <ModuleType>PlatformWorkforceTransfer</ModuleType>
+          <IsCulturalModule>1</IsCulturalModule>
+        </BuildingModule>
+        <Attackable />
+        <WorkforceConnector />
+        <FeedbackController />
+        <Pausable />
+        <Infolayer />
+        <UpgradeList />
+        <BuildingUnique />
+      </Properties>
+    </Template>
+<Item>
+	<Building>963</Building>
+	</Item>
+	<Item>
+	<Building>3356</Building>
+	</Item>
+	<Item>
+	<Building>3357</Building>
+	</Item>
+	<Item>
+	<Building>3358</Building>
+	</Item>
+	<Item>
+	<Building>3360</Building>
+	</Item>
+	<Item>
+	<Building>3361</Building>
+	</Item>
+	<Item>
+	<Building>3362</Building>
+	</Item>
+	<Item>
+	<Building>3363</Building>
+	</Item>
+	<Item>
+	<Building>3368</Building>
+	</Item>
+
+<Asset>4258</Asset>
+</Item>
+<Item>
+  <Asset>4259</Asset>
+</Item>
+<Item>
+  <Asset>4513</Asset>
+</Item>
+<Item>
+  <Asset>4260</Asset>
+
+-->
